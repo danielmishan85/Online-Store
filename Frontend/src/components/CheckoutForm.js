@@ -82,7 +82,7 @@ function CheckoutForm(props) {
           <input type='text' required id='cvv' ref={cvvInputRef} />
         </div>
         <div className={classes.actions}>
-          <button>Confirm Order</button>
+          <button onClick={submitHandler}>Confirm Order</button>
         </div>
       </form>
     </Card>

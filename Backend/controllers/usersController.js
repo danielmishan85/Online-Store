@@ -7,7 +7,7 @@ const getUsers = async (req, res, next) => {
   try {
     users = await User.find(
       {},
-      'fullName address shippingAddress email creditCardNumber expiryDate cvv'
+      'fullName address shippingAddress creditCardNumber email expiryDate cvv'
     );
   } catch (err) {
     return next(
@@ -30,7 +30,7 @@ const confirmOrder = async (req, res, next) => {
     address,
     shippingAddress,
     email,
-    craditCardNumber,
+    creditCardNumber,
     expiryDate,
     cvv,
   } = req.body;
@@ -40,7 +40,7 @@ const confirmOrder = async (req, res, next) => {
     address,
     shippingAddress,
     email,
-    craditCardNumber,
+    creditCardNumber,
     expiryDate,
     cvv,
   });

@@ -13,7 +13,7 @@ router.post(
     check('address').not().isEmpty(),
     check('shippingAddress').not().isEmpty(),
     check('email').not().isEmpty(),
-    check('craditCardNumber').not().isEmpty(),
+    check('creditCardNumber').not().isEmpty(),
     check('expiryDate').not().isEmpty(),
     check('cvv').not().isEmpty(),
   ],
