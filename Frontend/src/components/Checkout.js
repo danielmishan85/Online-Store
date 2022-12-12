@@ -1,4 +1,4 @@
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 import './Checkout.module.css';
 
