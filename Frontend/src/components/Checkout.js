@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 import './Checkout.module.css';
 
@@ -6,15 +6,18 @@ function Checkout() {
   const history = useNavigate();
 
   function onConfirmOrderHandler(userData) {
-    fetch('https://localhost:5000/checkout', {
+    fetch('http://localhost:5000/checkout', {
       method: 'POST',
+      mode: 'cors',
       body: JSON.stringify(userData),
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(() => {
-      history('/');
-    });
+    })
+      .then((res) => {
+        history('/');
+      })
+      .catch((err) => console.error(err));
   }
 
   return (

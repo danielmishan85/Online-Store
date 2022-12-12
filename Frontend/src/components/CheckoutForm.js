@@ -32,7 +32,6 @@ function CheckoutForm(props) {
       expiryDate: enteredExpiryDate,
       cvv: enteredCVV,
     };
-    console.log(userData);
     props.onConfirmOrder(userData);
   }
   return (
@@ -82,7 +81,7 @@ function CheckoutForm(props) {
           <input type='text' required id='cvv' ref={cvvInputRef} />
         </div>
         <div className={classes.actions}>
-          <button onClick={submitHandler}>Confirm Order</button>
+          <button>Confirm Order</button>
         </div>
       </form>
     </Card>

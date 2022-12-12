@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const productsRouters = require('./routes/products');
 const usersRouters = require('./routes/users');
 const HttpError = require('./models/httpError');
-
 const server = express();
 mongoose.set('strictQuery', true);
 server.use(bodyParser.json());
-
+server.use(cors());
 server.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); //every port can send
   res.setHeader(
@@ -40,6 +40,6 @@ mongoose
     'mongodb+srv://Danielmishan:Danielush7598@cluster0.cwwwndg.mongodb.net/products?retryWrites=true&w=majority'
   )
   .then(() => {
-    server.listen(5000, () => console.log('connect'));
+    server.listen(5000, () => console.log('connected to db'));
   })
   .catch((err) => console.log(err));

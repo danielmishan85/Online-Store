@@ -7,7 +7,7 @@ const getUsers = async (req, res, next) => {
   try {
     users = await User.find(
       {},
-      'fullName address shippingAddress creditCardNumber email expiryDate cvv'
+      '  fullName address shippingAddress email creditCardNumber expiryDate cvv'
     );
   } catch (err) {
     return next(
@@ -18,13 +18,6 @@ const getUsers = async (req, res, next) => {
 };
 
 const confirmOrder = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return next(
-      new HttpError('Invalid inputs passed, please check your data.', 422)
-    );
-  }
-
   const {
     fullName,
     address,
@@ -48,12 +41,12 @@ const confirmOrder = async (req, res, next) => {
   try {
     await createdUser.save();
   } catch (err) {
-    const error = new HttpError('Creating user failed, please try again.', 500);
+    console.log(err);
+    const error = new HttpError('Created user failed, please try again', 500);
     return next(error);
   }
 
   res.status(201).json({ user: createdUser.toObject({ getters: true }) });
 };
-
 exports.getUsers = getUsers;
 exports.confirmOrder = confirmOrder;
